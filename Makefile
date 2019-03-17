@@ -74,6 +74,10 @@ book:
 	mkdir -p $(BUILD_DIR)
 	pandoc $(PDF_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME)-book.pdf $(CHAPTERS)
 
+
+cover:
+	pandoc --template=templates/cover.tex --pdf-engine=xelatex -o $(BUILD_DIR)cover.pdf text/00-Intro/00-metadata.md
+
 html:
 	mkdir -p $(BUILD_DIR)html
 	cp -R $(IMAGES_DIR) $(BUILD_DIR)html/$(IMAGES_DIR)

@@ -1,0 +1,27 @@
+\documentclass[12pt]{article}
+% load the necessary packages
+\usepackage[paperheight=9in,paperwidth=13.24in,margin=0in]{geometry}
+\usepackage[dvipsnames,prologue,table]{pstricks}
+\usepackage{pst-text}
+% \usepackage{pst-char}
+\usepackage{pst-text}
+\usepackage{pst-grad}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+% begin the document and suppress page numbers
+\begin{document}
+  \pagestyle{empty}
+  \psset{unit=1in}
+  \begin{pspicture}(13.24in,9in)
+  \pagecolor{blue}
+  % \psframe[fillstyle=solid,fillcolor=blue](0,0)(13.24,9)
+  \rput(10,7){\sffamily\bfseries\Huge
+    \color{white}{Secrets of the Stamen}}
+  \end{pspicture}
+\end{document}
