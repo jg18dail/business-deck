@@ -5,6 +5,7 @@ author: "Ben Wilson"
 trimsize: Letter
 header-includes:
     - \newcommand{\hideFromPandoc}[1]{#1}
+    - \setlength{\columnsep}{0.5in}
     - \hideFromPandoc{
         \let\Begin\begin
         \let\End\end
