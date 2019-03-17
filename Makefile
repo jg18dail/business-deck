@@ -9,6 +9,7 @@ OUTPUT_BASENAME = $(shell basename $(CURDIR))-$(VERSION)
 
 # CHAPTERS = text/*.md
 CHAPTERS = $(shell find text -type f -name '*.md' | sort )
+SLIDES = $(shell find slides -type f -name '*.md' | sort )
 METADATA = metadata.yml
 LATEX_CLASS = book
 
@@ -31,6 +32,13 @@ HTML_BUILDER_FLAGS = \
 	--self-contained \
 	--webtex
 
+BEAMER_BUILDER_FLAGS = \
+	--pdf-engine=xelatex \
+	-t beamer \
+	--metadata=aspectratio:169 \
+	--template=templates/beamer.tex \
+	--slide-level 2
+
 PDF_BUILDER_FLAGS = \
 	-V documentclass=$(LATEX_CLASS) \
 	--template=templates/pdf.tex \
@@ -49,11 +57,11 @@ MOBI_BUILDER = kindlegen
 
 .PHONY: show-args
 show-args:
-	@printf "Book Version: %s\n" $(VERSION)
+	@printf "Project Version: %s\n" $(VERSION)
 
-all: book
+all: pdf slides
 
-book: pdf html epub
+# book: pdf html epub
 
 clean:
 	rm -r $(BUILD_DIR)*
@@ -71,8 +79,28 @@ html:
 	cp -R $(IMAGES_DIR) $(BUILD_DIR)html/$(IMAGES_DIR)
 	pandoc $(HTML_BUILDER_FLAGS) -o $(BUILD_DIR)html/$(OUTPUT_BASENAME).html $(CHAPTERS)
 
+slide:
+	pandoc $(BEAMER_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME).slides.pdf $(SLIDES)
+
+handout:
+	pandoc $(BEAMER_BUILDER_FLAGS) -V handout -o $(BUILD_DIR)$(OUTPUT_BASENAME).handout.pdf $(SLIDES)
+	pdfnup $(BUILD_DIR)$(OUTPUT_BASENAME).handout.pdf --nup 1x2 --no-landscape --keepinfo \
+			--paper letterpaper --frame true --scale 0.9 \
+			--suffix "nup"
+
+
 $(BUILD_DIR)$(OUTPUT_BASENAME).epub:
 	mkdir -p $(BUILD_DIR)
 	pandoc $(EPUB_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME).epub $(CHAPTERS)
 
+
 epub: $(BUILD_DIR)$(OUTPUT_BASENAME).epub
+
+
+
+# %.md.handout.pdf : %.md
+# 	pandoc $^ -t beamer --slide-level 2 -V handout -o $@
+# 	pdfnup $@ --nup 1x2 --no-landscape --keepinfo \
+# 		--paper letterpaper --frame true --scale 0.9 \
+# 		--suffix "nup"
+# 	mv $*.md.handout-nup.pdf $@
