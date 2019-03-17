@@ -55,9 +55,10 @@ identifier: # Ebook
   -text:   isbn13:9-78098-3952-107
 
 # Production Recognition
+# https://commons.wikimedia.org/wiki/File:Brain_anatomy_medical_head_skull_digital_3_d_x_ray_xray_psychedelic_3720x2631.jpg
 credits:
-  - "Cover Design: Donna Murillo"
-  - "Developmental Editor: Cara Lockwood"
+  - "Cover Design: Ben Wilson"
+  - "Cover Image: Martin420 https://merovx.io/2WceXAL (CC BY-SA 4.0)"
   - "Copy Editor: Cynthia Shepp"
 
 country: Printed in the United States of America

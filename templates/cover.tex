@@ -1,15 +1,32 @@
 \documentclass[12pt]{article}
 % load the necessary packages
-\usepackage[paperheight=9in,paperwidth=13.24in,margin=0in]{geometry}
+\usepackage[paperheight=11.25in,paperwidth=17.8in,margin=0in]{geometry}
 \usepackage[dvipsnames,prologue,table]{pstricks}
 \usepackage{pst-text}
-% \usepackage{pst-char}
+\usepackage{rotating}
 \usepackage{pst-text}
 \usepackage{pst-grad}
 \usepackage{graphicx}
-\usepackage{lipsum}
 
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
 
+$if(seriffont)$
+  \setmainfont{$seriffont$}
+$else$
+  \setmainfont{Libre Caslon Text}
+$endif$
+$if(sansfont)$
+  \setsansfont{$sansfont$}
+$else$
+  \setsansfont{Lato}
+$endif$
+$if(monofont)$
+  \setmonofont{$monofont$}
+$else$
+  \setmonofont{Courier}
+$endif$
 
 $for(header-includes)$
 $header-includes$
@@ -18,10 +35,38 @@ $endfor$
 \begin{document}
   \pagestyle{empty}
   \psset{unit=1in}
-  \begin{pspicture}(13.24in,9in)
-  \pagecolor{blue}
-  % \psframe[fillstyle=solid,fillcolor=blue](0,0)(13.24,9)
-  \rput(10,7){\sffamily\bfseries\Huge
-    \color{white}{Secrets of the Stamen}}
+
+  \begin{pspicture}(17.8in,11.25in)
+  \psframe[fillstyle=solid,linestyle=none,fillcolor=blue,opacity=0.5](-0.25,0)(17.8,11.25)
+
+  % Front Image
+  \newsavebox\IBox
+  \sbox\IBox{\includegraphics[width=18in]{%
+    images/Brain_anatomy_medical_head_skull_digital_3_d_x_ray_xray_psychedelic_3720x2631.png%
+    }
+  }
+  \rput[lb](-0.25,0){\usebox\IBox}
+  \psframe[fillstyle=solid,linestyle=none,fillcolor=blue,opacity=0.7](-0.25,0)(17.8,11.25)
+  % Front Text
+  \rput(13.5,7){\ttfamily\bfseries\Huge\color{white}{$title$}}
+  \rput(13.5,6){\sffamily\Large\color{white}{$subtitle$}}
+  \rput(13.5,1){\sffamily\Large\color{white}{$author$}}
+
+  % Spine
+  \psframe[fillstyle=solid,linestyle=none,fillcolor=blue,opacity=1](8.5,0)(9.0,11.25)
+       \rput[b](8.75,1){\sffamily\color{white}{\fbox{L}}}
+  \rput[l]{270}(8.75,10){\sffamily\color{white}{$author$}}
+  \rput[l]{270}(8.75,6.5){\sffamily\bfseries\Large\color{white}{$title$}}
+
+
+  % Create a Box containing the text for the back cover
+  \newsavebox\Blurbbox
+  \sbox\Blurbbox{\begin{minipage}{5.5in}
+  \sffamily\textcolor{white}{\lipsum[1]}
+  % \sffamily\textcolor{white}{$synopsis$}
+  \end{minipage}}
+  % And position the box
+  \rput[tl](1.5,10){\usebox\Blurbbox}
+
   \end{pspicture}
 \end{document}
