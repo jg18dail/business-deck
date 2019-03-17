@@ -1,8 +1,10 @@
 ---
 title: "Business Plan"
 # subtitle: "The worldbuilding for the Stranded Series"
-author: "Ben Wilson"
+author: "Team Jackass"
 trimsize: Letter
+sansfont: Josefin Sans
+linestretch: 1.3
 header-includes:
     - \newcommand{\hideFromPandoc}[1]{#1}
     - \setlength{\columnsep}{0.5in}

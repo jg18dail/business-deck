@@ -7,6 +7,7 @@ $endif$$if(dir)$$if(latex-dir-rtl)$
 $endif$$endif$%
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$if(beamer)$ignorenonframetext,$if(handout)$handout,$endif$$if(aspectratio)$aspectratio=$aspectratio$,$endif$$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 \usepackage{multicol}
+\setlength\columnsep{20pt}
 \usepackage{titlesec}
 \usepackage{graphicx}
 % \usepackage{lipsum}
@@ -76,12 +77,12 @@ $if(seriffont)$
 $else$
   \setmainfont{Libre Caslon Text}
 $endif$
-$if(seriffont)$
+$if(sansfont)$
   \setsansfont{$sansfont$}
 $else$
   \setsansfont{Lato}
 $endif$
-$if(seriffont)$
+$if(monofont)$
   \setmonofont{$monofont$}
 $else$
   \setmonofont{Courier}
@@ -179,6 +180,7 @@ $else$
 $endif$
 $if(verbatim-in-note)$
 \usepackage{fancyvrb}
+
 $endif$
 $if(colorlinks)$
 \usepackage{xcolor}
@@ -308,6 +310,7 @@ $endif$
 % $endfor$
 % HEADER DESIGN
 \usepackage{fancyhdr} % headers
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \pagestyle{fancy} % style for headers
 \usepackage{pifont} % for the copyright symbol
 \headheight 0.25in % height of header
@@ -320,15 +323,33 @@ $endif$
 \fancyhead{} % clear header fields, required
 \fancyfoot{} % clear footer fields, required
 % \fancyfoot[C]{\currpage}
-\fancyhead[LE,RO]{\currpage}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+% \fancyfoot[C]{\currpage}
 \fancyhead[CO]{ \footnotesize\MakeUppercase{$title$}  } % Odd Page, Right side
-\fancyhead[CE]{ \footnotesize\chaptermark } % Even Page, Right side
+% \fancyhead[CE]{ \footnotesize\MakeUppercase{Confidential and proprietary} } % Even Page, Right side
+\fancyfoot[C]{\footnotesize\sffamily\MakeUppercase{Confidential. All rights reserved.}}
+\fancyfoot[RO, LE] {\thepage}
+
 \renewcommand\headrulewidth{0pt} % for no rule line under header
 
-\titleformat{\chapter}[display]
-  {\normalfont\sffamily\huge\bfseries\color{blue}}
-  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat
+{\chapter} % command
+[display] % shape
+{\sffamily\Huge} % format
+{} % label
+{0.5ex} % sep
+{
+    \centering
+} % before-code
+[
+% \vspace{-0.5ex}%
+% \rule{\textwidth}{0.3pt}
+] % after-code
+
+
+% \titleformat{\section}[display]
+% {\sffamily\bfseries\Large\color{red}}
+% {\thesection.}{0.5em}{}
+\titleformat*{\section}{\sffamily\Large\bfseries\color{red}}
 
 % \titleformat{\chapter}[display]
 %   {\bfseries\Large}
