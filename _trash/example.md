@@ -1,17 +1,4 @@
----
-author:
-- Team Jackass
-subtitle: Techman 2020
-title: Spatial History
-titlepage-note: |
-  This is a the note that goes on the title page. This talk is to be
-  given at Doing DH.
-institute: George Mason University
-fontsize: 14pt
-# theme: focus
-theme: Flip
-sansfont: Droid Sans
----
+
 
 # Don't be afraid of telling lies; be afraid of failing to communicate the truth
 

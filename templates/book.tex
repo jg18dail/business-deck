@@ -305,12 +305,22 @@ $endif$
 \def\fps@figure{htbp}
 \makeatother
 
-% $for(header-includes)$
-% $header-includes$
-% $endfor$
+$for(header-includes)$
+$header-includes$
+$endfor$
 % HEADER DESIGN
 \usepackage{fancyhdr} % headers
-\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  % \fancyfoot[C]{\sffamily\thepage\ of \pageref{LastPage}}%
+  \fancyfoot[C]{\footnotesize\sffamily\MakeUppercase{Confidential. All rights reserved.}}
+  \fancyfoot[RO, LE] {\sffamily\thepage}
+  \renewcommand{\headrulewidth}{0pt}% Line at the header invisible
+  \renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+}
+
+
 \pagestyle{fancy} % style for headers
 \usepackage{pifont} % for the copyright symbol
 \headheight 0.25in % height of header
@@ -319,22 +329,22 @@ $endif$
 \parindent 0.25in % = 6.35mm
 \newcommand{\str}{\rule{0pt}{16pt}} % strut used in toc
 %%% header stuff
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{: #1}{}}
 \newcommand{\currpage}{\footnotesize\thepage} % use in headers
 \fancyhead{} % clear header fields, required
 \fancyfoot{} % clear footer fields, required
-% \fancyfoot[C]{\currpage}
-% \fancyfoot[C]{\currpage}
-\fancyhead[CO]{ \footnotesize\MakeUppercase{$title$}  } % Odd Page, Right side
-% \fancyhead[CE]{ \footnotesize\MakeUppercase{Confidential and proprietary} } % Even Page, Right side
+\fancyhead[LE]{ \footnotesize\sffamily\MakeUppercase{$title$: $subtitle$}  } % Odd Page, Right side
+\fancyhead[RO]{ \footnotesize\sffamily\MakeUppercase{\leftmark{}\rightmark}  } % Odd Page, Right side
 \fancyfoot[C]{\footnotesize\sffamily\MakeUppercase{Confidential. All rights reserved.}}
-\fancyfoot[RO, LE] {\thepage}
-
-\renewcommand\headrulewidth{0pt} % for no rule line under header
+\fancyfoot[RO, LE] {\sffamily\thepage}
+\renewcommand{\footrulewidth}{0.4pt}% Line at the footer visible
+% \renewcommand\headrulewidth{0pt} % for no rule line under header
 
 \titleformat
 {\chapter} % command
 [display] % shape
-{\sffamily\Huge} % format
+{\ttfamily\Huge} % format
 {} % label
 {0.5ex} % sep
 {
@@ -537,9 +547,15 @@ $endif$
     \vspace*{\fill}
 
     \Huge\textbf{\textsf{$title$}}
-    $if(subtitle)$
 
-    \vspace*{0.125in}\Large\textbf{\textsf{$subtitle$}}\newline$endif$
+    $if(subtitle)$
+    \vspace*{0.125in}
+    {\centering
+     \Large\textbf{\textsf{$subtitle$}}
+    }
+
+
+    $endif$
 
     \vspace*{0.25in}
     \line(1,0){150}

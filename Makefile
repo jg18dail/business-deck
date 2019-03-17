@@ -35,13 +35,12 @@ HTML_BUILDER_FLAGS = \
 BEAMER_BUILDER_FLAGS = \
 	--pdf-engine=xelatex \
 	-t beamer \
-	--metadata=aspectratio:169 \
-	--template=templates/beamer.tex \
+	--template=templates/presentation.tex \
 	--slide-level 2
 
 PDF_BUILDER_FLAGS = \
 	-V documentclass=$(LATEX_CLASS) \
-	--template=templates/pdf.tex \
+	--template=templates/book.tex \
 	--metadata=version:$(VERSION) \
 	--lua-filter templates/latex.lua \
 	--pdf-engine=xelatex \
@@ -59,35 +58,35 @@ MOBI_BUILDER = kindlegen
 show-args:
 	@printf "Project Version: %s\n" $(VERSION)
 
-all: pdf slides
+all: book presentation handout
 
-# book: pdf html epub
+# book: book html epub
 
 clean:
+	touch $(BUILD_DIR)cleaning
 	rm -r $(BUILD_DIR)*
 
 docx:
 	mkdir -p $(BUILD_DIR)
 	pandoc $(WORD_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME).docx $(CHAPTERS)
 
-pdf:
+book:
 	mkdir -p $(BUILD_DIR)
-	pandoc $(PDF_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME).pdf $(CHAPTERS)
+	pandoc $(PDF_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME)-book.pdf $(CHAPTERS)
 
 html:
 	mkdir -p $(BUILD_DIR)html
 	cp -R $(IMAGES_DIR) $(BUILD_DIR)html/$(IMAGES_DIR)
 	pandoc $(HTML_BUILDER_FLAGS) -o $(BUILD_DIR)html/$(OUTPUT_BASENAME).html $(CHAPTERS)
 
-slide:
-	pandoc $(BEAMER_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME).slides.pdf $(SLIDES)
+presentation:
+	pandoc $(BEAMER_BUILDER_FLAGS) --metadata=aspectratio:169 -o $(BUILD_DIR)$(OUTPUT_BASENAME)-presentation.pdf $(SLIDES)
 
 handout:
-	pandoc $(BEAMER_BUILDER_FLAGS) -V handout -o $(BUILD_DIR)$(OUTPUT_BASENAME).handout.pdf $(SLIDES)
-	pdfnup $(BUILD_DIR)$(OUTPUT_BASENAME).handout.pdf --nup 1x3 --no-landscape --keepinfo \
+	pandoc $(BEAMER_BUILDER_FLAGS) -V handout -o $(BUILD_DIR)$(OUTPUT_BASENAME)-handout.pdf $(SLIDES)
+	pdfnup $(BUILD_DIR)$(OUTPUT_BASENAME)-handout.pdf --nup 1x3 --no-landscape --keepinfo \
 			--paper letterpaper --frame true --scale 0.9 \
 			--suffix "nup"
-
 
 $(BUILD_DIR)$(OUTPUT_BASENAME).epub:
 	mkdir -p $(BUILD_DIR)
@@ -95,12 +94,3 @@ $(BUILD_DIR)$(OUTPUT_BASENAME).epub:
 
 
 epub: $(BUILD_DIR)$(OUTPUT_BASENAME).epub
-
-
-
-# %.md.handout.pdf : %.md
-# 	pandoc $^ -t beamer --slide-level 2 -V handout -o $@
-# 	pdfnup $@ --nup 1x2 --no-landscape --keepinfo \
-# 		--paper letterpaper --frame true --scale 0.9 \
-# 		--suffix "nup"
-# 	mv $*.md.handout-nup.pdf $@

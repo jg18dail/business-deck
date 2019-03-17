@@ -1,4 +1,4 @@
-# Ipsum Lorem
+## Section Two
 
 \Begin{multicols}{2}
 
