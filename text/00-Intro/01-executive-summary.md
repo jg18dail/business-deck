@@ -12,4 +12,12 @@ Ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod t
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ac semper massa. Nunc tristique felis at scelerisque scelerisque. In sed nunc ac ex egestas vestibulum sed sed nisl. Suspendisse rhoncus nisi at felis mollis gravida quis a erat. Nunc cursus lectus et neque facilisis, nec accumsan odio placerat. Sed non sollicitudin nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 
+Goal of the executive summary: Stimulate and motivate the investor to learn more.
+
+* **Hook them on the first page.** Most investors are inundated with business plans. Your first page must make them want to keep reading.
+* **Keep it simple.** After reading the first page, investors often do not understand the business. If your business is truly complex, you can dive into the details later on.
+* **Be brief.** The executive summary should be 2 to 4 pages in length.
+
+\lipsum
+
 \End{multicols}

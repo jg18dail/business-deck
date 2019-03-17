@@ -182,6 +182,7 @@ $if(verbatim-in-note)$
 \usepackage{fancyvrb}
 
 $endif$
+
 $if(colorlinks)$
 \usepackage{xcolor}
 $endif$
@@ -344,7 +345,7 @@ $endfor$
 \titleformat
 {\chapter} % command
 [display] % shape
-{\ttfamily\Huge} % format
+{\ttfamily\Huge\color{blue}} % format
 {} % label
 {0.5ex} % sep
 {
@@ -356,10 +357,17 @@ $endfor$
 ] % after-code
 
 
-% \titleformat{\section}[display]
-% {\sffamily\bfseries\Large\color{red}}
-% {\thesection.}{0.5em}{}
-\titleformat*{\section}{\sffamily\Large\bfseries\color{red}}
+\titleformat{\section}[display]
+{\sffamily\bfseries\Large\color{red}}
+{\thesection.}{0.5em}{\nopagebreak[4]}
+% \titleformat*{\section}
+%   [display] % Shape
+%   {\sffamily\Large\bfseries\color{red}} % format
+%   {} % Label
+%   {} % sep
+%   {\nopagebreak } % Before Code
+%   []
+
 
 % \titleformat{\chapter}[display]
 %   {\bfseries\Large}
@@ -546,7 +554,8 @@ $endif$
   \begin{center}
     \vspace*{\fill}
 
-    \Huge\textbf{\textsf{$title$}}
+    % \Huge\textbf{\textsf{$title$}}
+    \ttfamily{\Huge\color{blue}{$title$}}
 
     $if(subtitle)$
     \vspace*{0.125in}

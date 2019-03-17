@@ -18,9 +18,18 @@ header-includes:
         \let\Begin\begin
         \let\End\end
       }
-website: "https://merovex.com"
+    - \usepackage{xcolor}
+    - \usepackage{spreadtab}
+    - \definecolor{red}{cmyk}{0.0, 0.56, 0.43, 0.58}
+    - \definecolor{blue}{cmyk}{0.56, 0.21, 0, 0.58} # % 2F546B
+    - \definecolor{yellow}{cmyk}{0, 0.0, 0.56, 0.58}
+    - \definecolor{orange}{cmyk}{0, 0.34, 0.56, 0.58}
+    - \usepackage{lipsum}
+# website: "https://merovex.com"
 # imprint: "images/logo.png"
 toc: true
+lof: true
+lot: true
 # Other titles
 
 # Copyright Information

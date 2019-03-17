@@ -1,0 +1,20 @@
+%%% mtheme customisations
+\usetheme[progressbar=frametitle,block=fill]{m}
+\setmonofont[Scale=0.92]{Fira Mono}
+\AtBeginSubsection{
+\metroset{color/background=dark}
+\frame[plain,c]{
+  \begin{center}
+  \begin{minipage}{25em}
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsubsection\\[-1ex]
+    \usebeamertemplate*{progress bar in section page}
+  \end{minipage}
+  \end{center}
+}
+\metroset{color/background=light}
+}
+% \setbeamercolor{normal text}{fg=blue,bg=red}
+% \setbeamercolor{structure}{fg=blue}
+% \setbeamerfont{title}{size=\Huge}

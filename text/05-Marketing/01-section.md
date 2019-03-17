@@ -1,3 +1,24 @@
+## Goals
+
+\Begin{multicols}{2}
+
+Goal of the marketing plan: Describe how your company will penetrate the market, deliver products/services, and retain customers.
+
+**Focus on the 4 P’s.** They are: Products, Promotions, Price, and Place.
+
+* **Products.** Detail all current and future products and services – but focus primarily on the short-to-intermediate time horizon.
+* **Promotions.** Explain exactly which marketing/advertising strategies will be used and why.
+* **Price.** Be sure to provide a clear rationale for your pricing strategy.
+* **Place.** Explain exactly how your products/services will be delivered to your customers.
+
+**Detail your customer retention plan.** Explain how you will retain your customers, whether through customer relationship management (CRM) applications, building network externalities, introducing ongoing value-added services, or other means.
+
+**Define your partnerships.** From an investor’s perspective, what partnership you have with whom is not nearly as important as the specific terms of the partnership. Be sure to document the specifics of the partnerships (e.g. how it will work, the financial terms, the types of customer leads expected from each partner, etc.).
+
+\End{multicols}
+
+## Ipsum Lorem
+
 \Begin{multicols}{2}
 
 ipsum Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
