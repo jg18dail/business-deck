@@ -1,4 +1,4 @@
-## Market analysis
+## `Market analysis`
 
 \Begin{multicols}{2}
 
