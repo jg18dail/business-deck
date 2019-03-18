@@ -1,5 +1,7 @@
 ## Leadership Team
 
+Our management team and its consultants are qualified professionals with vast experience with plant installation and operations, purchasing and marketing. Our consultants will be employed during the start-up period (see Start-up table). We welcome any additional person from our investor's group that can contribute to the success of the company.
+
 ![Birchfield, Daily, Hughes, Koprowski, Wilson](images/p2404232675-5.jpg)
 
 #### Bryan Birchfield
