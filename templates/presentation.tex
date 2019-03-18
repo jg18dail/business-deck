@@ -7,7 +7,6 @@ $endif$$if(dir)$$if(latex-dir-rtl)$
 $endif$$endif$%
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$if(beamer)$ignorenonframetext,$if(handout)$handout,$endif$$if(aspectratio)$aspectratio=$aspectratio$,$endif$$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 
-
 \usepackage{fontspec}
 \usepackage{xunicode}
 \usepackage{xltxtra}
@@ -82,9 +81,12 @@ $if(beamer)$
   }
   %%%%% end mtheme
   $endif$
+  $for(beamer-includes)$
+  $beamer-includes$
+  $endfor$
 $endif$
 $if(beamerarticle)$
-\usepackage{beamerarticle} % needs to be loaded first
+  \usepackage{beamerarticle} % needs to be loaded first
 $endif$
 $if(fontfamily)$
   \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}

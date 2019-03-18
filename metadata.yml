@@ -1,7 +1,38 @@
 ---
-# ===============================================
-# Book formatting - Avoid
-#
-links-as-notes: true
-fontsize: 11pt
+title:      Digital Librarian
+subtitle:   GMU TechMan 2020 Business Plan
+institute:  George Mason University
+author:     Team Dewey
+authors:
+  - Brian Birchfield
+  - John Daily
+  - Jake Hughes
+  - Robert Koprowski
+  - Ben Wilson
+header-includes:
+  - \newcommand{\hideFromPandoc}[1]{#1}
+  - \hideFromPandoc{
+      \let\Begin\begin
+      \let\End\end
+    }
+  - \usepackage{xcolor}
+  - \usepackage{spreadtab}
+  - \definecolor{red}{cmyk}{0.0, 0.56, 0.43, 0.58}
+  - \definecolor{blue}{cmyk}{0.56, 0.21, 0, 0.58} # % 2F546B
+  - \definecolor{yellow}{cmyk}{0, 0.0, 0.56, 0.58}
+  - \definecolor{orange}{cmyk}{0, 0.34, 0.56, 0.58}
+  - \usepackage{lipsum}
+  - \setmonofont{Permanent Marker}
+themeoptions:
+  - progressbar=frametitle
+  - block=fill
+  - titleformat=smallcaps
+beamer-includes:
+  - \setbeamercolor{frametitle}{bg=blue}
+  - \setbeamerfont{title}{size=\Large,family=\ttfamily}
+  - \setbeamercolor{title}{fg=blue}
+  - \setbeamerfont{frametitle}{size=\large,family=\rmfamily}
+  - \setbeamercolor{title separator}{ fg=red }
+  - \setbeamercolor{progress bar}{ use=alerted text, fg=red, bg=red!50!black!30 }
+
 ---
