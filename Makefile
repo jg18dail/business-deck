@@ -51,6 +51,9 @@ WORD_BUILDER_FLAGS = \
 	--metadata-file=$(METADATA) \
 	--lua-filter templates/latex.lua
 
+HANDOUT_BUILDER_FLAGS = \
+	-V handout=true
+
 MOBI_BUILDER = kindlegen
 
 .PHONY: show-args
@@ -67,14 +70,14 @@ clean:
 
 docx:
 	mkdir -p $(BUILD_DIR)
-	pandoc $(WORD_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME).docx $(CHAPTERS)
+	pandoc $(WORD_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME).docx $(METADATA) $(CHAPTERS)
 
 book:
 	mkdir -p $(BUILD_DIR)
 	pandoc $(PDF_BUILDER_FLAGS) -o $(BUILD_DIR)$(OUTPUT_BASENAME)-book.pdf $(METADATA) $(CHAPTERS)
 
 cover:
-	pandoc --template=templates/cover.tex --pdf-engine=xelatex -o $(BUILD_DIR)cover.pdf $(METADATA)
+	pandoc --template=templates/cover.tex --pdf-engine=xelatex -o $(BUILD_DIR)$(OUTPUT_BASENAME)-cover.pdf $(METADATA)
 
 html:
 	mkdir -p $(BUILD_DIR)html
@@ -86,9 +89,9 @@ presentation:
 
 handout:
 	pandoc $(BEAMER_BUILDER_FLAGS) -V handout -o $(BUILD_DIR)$(OUTPUT_BASENAME)-handout.pdf $(METADATA) $(SLIDES)
-	pdfnup $(BUILD_DIR)$(OUTPUT_BASENAME)-handout.pdf --nup 1x3 --no-landscape --keepinfo \
-			--paper letterpaper --frame true --scale 0.9 \
-			--suffix "nup"
+	# pdfnup $(BUILD_DIR)$(OUTPUT_BASENAME)-handout.pdf --nup 1x3 --no-landscape --keepinfo \
+	# 		--paper letterpaper --frame true --scale 0.9 \
+	# 		--suffix "nup"
 
 $(BUILD_DIR)$(OUTPUT_BASENAME).epub:
 	mkdir -p $(BUILD_DIR)

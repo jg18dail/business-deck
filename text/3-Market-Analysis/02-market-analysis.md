@@ -1,5 +1,7 @@
 ## Market Size & Potential
 
+currentEnvironment
+
 Goal of the industry analysis section: Prove that there is a real market for your product or service.
 
 Demonstrate the need – rather than the desire – for your product. Ideally, people are willing to pay money to satisfy this need.
